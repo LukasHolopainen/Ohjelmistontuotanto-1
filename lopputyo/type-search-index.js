@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.button.lopputyo","l":"AbstraktiFaktaPalvelu"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.button.lopputyo","l":"FaktaGUI"},{"p":"com.button.lopputyo","l":"FaktaPalvelu"},{"p":"com.button.lopputyo","l":"FaktaTiedosto"}];updateSearchResults();

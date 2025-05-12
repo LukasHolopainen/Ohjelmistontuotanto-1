@@ -1,0 +1,21 @@
+Tiede|Valo kulkee lähes täydellisessä tyhjiössä noin 299 792 458 m/s.
+Tiede|Maapallon painovoima on noin 9,81 m/s².
+Tiede|Veden kiehumispiste on 100°C normaalissa ilmanpaineessa.
+Historia|Ensimmäinen tietokone ENIAC rakennettiin vuonna 1945.
+Historia|Ranskan vallankumous alkoi vuonna 1789.
+Historia|Apollo 11 laskeutui kuuhun 20. heinäkuuta 1969.
+Biologia|Ihmisen aivot painavat noin 1,4 kiloa.
+Biologia|Ihmisen sydän lyö keskimäärin 70 kertaa minuutissa.
+Biologia|Aivot voivat muodostaa noin 100 000 uutta aivosolua päivittäin.
+Tekniikka|Ensimmäinen älypuhelin oli IBM Simon.
+Tekniikka|Ensimmäinen tietokone tuli markkinoille 1940-luvulla.
+Tekniikka|Ensimmäinen Wi-Fi-yhteys kehitettiin 1990-luvulla.
+Uskonto|Kristinuskon mukaan Jeesus nousi kuolleista kolmantena päivänä.
+Uskonto|Buddhalaisuudessa ei ole jumalaa, vaan pyritään valaistumiseen.
+Uskonto|Islamin pyhä kirja on Koraani.
+Maantiede|Maapallon suurin valtameri on Tyynimeri.
+Maantiede|Himalajalla sijaitseva Mount Everest on maailman korkein vuori.
+Maantiede|Afrikan suurin järvi on Victorianjärvi.
+Kulttuuri|Mona Lisa on Leonardo da Vincin maalaus.
+Kulttuuri|Shakespeare kirjoitti yli 30 näytelmää.
+Kulttuuri|Karaoke on peräisin Japanista.
