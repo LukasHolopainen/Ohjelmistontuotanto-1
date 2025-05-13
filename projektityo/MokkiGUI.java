@@ -60,7 +60,6 @@ public class MokkiGUI extends Application {
                 }
             }
         });
-
     }
 
     private VBox createVarausLayout() {
@@ -69,9 +68,10 @@ public class MokkiGUI extends Application {
 
         varausTable = new TableView<>();
         varausTable.getColumns().addAll(
+                createColumn("VarausID", varaus -> generateRandomID()),  // Lisää VarausID-sarake
                 createColumn("Mökki", Varaus::getMokki),
                 createColumn("Päivämäärä", v -> v.getPaivamaaraStart() + " - " + v.getPaivamaaraEnd()),
-                createColumn("Asiakas", Varaus::getAsiakas),
+                createColumn("Asiakas", v -> v.getAsiakas().getNimi()),  // Asiakas-nimi
                 createColumn("Puhelinnumero", Varaus::getPuhelin),
                 createColumn("Sähköposti", Varaus::getEmail)
         );
@@ -166,16 +166,25 @@ public class MokkiGUI extends Application {
         String email = emailField.getText();
 
         if (mokki != null && !paivaStart.isEmpty() && !paivaEnd.isEmpty() && !etunimi.isEmpty() && !sukunimi.isEmpty() && !puhelin.isEmpty() && !email.isEmpty()) {
-            String asiakas = etunimi + " " + sukunimi;
-            varaukset.add(new Varaus(mokki, paivaStart, paivaEnd, asiakas, puhelin, email));
+            AsiakasOlio asiakas = new AsiakasOlio(0, etunimi + " " + sukunimi, puhelin);
+            asiakas.setSpostiOsoite(email);
+
+            Varaus varaus = new Varaus(mokki, paivaStart, paivaEnd, asiakas, puhelin, email);
+            varaukset.add(varaus);
             varausTable.getItems().setAll(varaukset);
-            showAlert("Varaus onnistui!", mokki + " varattu ajalle " + paivaStart + " - " + paivaEnd + ". Asiakas: " + asiakas);
+
+            showAlert("Varaus onnistui!", mokki + " varattu ajalle " + paivaStart + " - " + paivaEnd + ". Asiakas: " + asiakas.getNimi());
+
         } else {
             showAlert("Virhe", "Täytä kaikki kentät!");
         }
 
         varausPaivamaaraStart.setValue(null); // tyhjennä valinta
         varausPaivamaaraEnd.setValue(null);   // tyhjennä valinta
+        etunimiField.clear();
+        sukunimiField.clear();
+        puhelinField.clear();
+        emailField.clear();
     }
 
     private void tyhjennaKentat() {
@@ -196,40 +205,50 @@ public class MokkiGUI extends Application {
         alert.showAndWait();
     }
 
-    public static class Varaus {
-        private final String mokki, paivamaaraStart, paivamaaraEnd, asiakas, puhelin, email;
+    // Generoi satunnainen VarausID
+    private String generateRandomID() {
+        return String.valueOf((int) (Math.random() * 10000));
+    }
+}
 
-        public Varaus(String mokki, String paivamaaraStart, String paivamaaraEnd, String asiakas, String puhelin, String email) {
-            this.mokki = mokki;
-            this.paivamaaraStart = paivamaaraStart;
-            this.paivamaaraEnd = paivamaaraEnd;
-            this.asiakas = asiakas;
-            this.puhelin = puhelin;
-            this.email = email;
-        }
+class Varaus {
+    private String mokki;
+    private String paivamaaraStart;
+    private String paivamaaraEnd;
+    private AsiakasOlio asiakas;
+    private String puhelin;
+    private String email;
 
-        public String getMokki(){
-            return mokki;
-        }
+    public Varaus(String mokki, String paivamaaraStart, String paivamaaraEnd, AsiakasOlio asiakas, String puhelin, String email) {
+        this.mokki = mokki;
+        this.paivamaaraStart = paivamaaraStart;
+        this.paivamaaraEnd = paivamaaraEnd;
+        this.asiakas = asiakas;
+        this.puhelin = puhelin;
+        this.email = email;
+    }
 
-        public String getPaivamaaraStart() {
-            return paivamaaraStart;
-        }
+    public String getMokki() {
+        return mokki;
+    }
 
-        public String getPaivamaaraEnd() {
-            return paivamaaraEnd;
-        }
+    public String getPaivamaaraStart() {
+        return paivamaaraStart;
+    }
 
-        public String getAsiakas() {
-            return asiakas;
-        }
+    public String getPaivamaaraEnd() {
+        return paivamaaraEnd;
+    }
 
-        public String getPuhelin() {
-            return puhelin;
-        }
+    public AsiakasOlio getAsiakas() {
+        return asiakas;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public String getPuhelin() {
+        return puhelin;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
