@@ -3,4 +3,5 @@ module MokinVarausJarjestelma {
     requires javafx.fxml;
 
     exports projektityo;
+    opens projektityo to javafx.fxml;
 }
